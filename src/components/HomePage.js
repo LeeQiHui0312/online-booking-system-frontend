@@ -25,9 +25,8 @@ const HomePage = () => {
 
   const filteredCars = cars.filter(car => {
     return (
-      (!filters.carType || car.type === filters.carType) &&
-      (!filters.minPrice || car.pricePerDay >= filters.minPrice) &&
-      (!filters.maxPrice || car.pricePerDay <= filters.maxPrice)
+      (!filters.minPrice || car.dailyPrice >= filters.minPrice) &&
+      (!filters.maxPrice || car.dailyPrice <= filters.maxPrice)
     );
   });
 
@@ -35,10 +34,6 @@ const HomePage = () => {
     <div>
       <h1>Available Cars</h1>
       <div>
-        <label>
-          Car Type:
-          <input type="text" name="carType" value={filters.carType} onChange={handleFilterChange} />
-        </label>
         <label>
           Min Price:
           <input type="number" name="minPrice" value={filters.minPrice} onChange={handleFilterChange} />
